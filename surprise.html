@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise ❤️</title>
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3);
+      padding:20px;
+    }
+
+    .box{
+      background:white;
+      padding:50px 40px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      max-width:600px;
+      text-align:center;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1{
+      color:#ff4081;
+      font-size:42px;
+      margin-bottom:20px;
+      animation: popIn 0.6s ease-out;
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .heart-emoji{
+      display:inline-block;
+      animation: heartBeat 1.2s infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.3);
+      }
+      50% {
+        transform: scale(1);
+      }
+    }
+
+    p{
+      color:#555;
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:25px;
+      animation: fadeInText 1s ease-out;
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .confetti{
+      position:fixed;
+      width:10px;
+      height:10px;
+      background:#ff4081;
+      pointer-events:none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .button-container{
+      display:flex;
+      gap:15px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:25px;
+    }
+
+    button{
+      padding:12px 30px;
+      border:none;
+      border-radius:30px;
+      background:#ff4081;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      font-weight:bold;
+    }
+
+    button:hover{
+      background:#e91e63;
+      transform:scale(1.05);
+      box-shadow:0 5px 15px rgba(233, 30, 99, 0.4);
+    }
+
+    button:active{
+      transform:scale(0.98);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>🎁 <span class="heart-emoji">❤️</span> Surprise! 🎉</h1>
+    
+    <p>
+      You are the most special person in my life ❤️<br><br>
+      Happy Birthday! May your day be filled with love, joy, and endless happiness!<br><br>
+      Thank you for being such an amazing person and making my life beautiful! 💝
+    </p>
+
+    <div class="button-container">
+      <button onclick="goBack()">← Back to Memories</button>
+      <button onclick="goHome()">Home ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    // Confetti animation
+    function createConfetti() {
+      for(let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.backgroundColor = ['#ff4081', '#e91e63', '#ff7eb3', '#ff758c'][Math.floor(Math.random() * 4)];
+          confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+          document.body.appendChild(confetti);
+          
+          setTimeout(() => confetti.remove(), 4000);
+        }, i * 30);
+      }
+    }
+
+    // Trigger confetti on page load
+    window.addEventListener('load', createConfetti);
+
+    function goBack() {
+      window.location.href = 'memory.html';
+    }
+
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>
